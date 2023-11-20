@@ -1,0 +1,21 @@
+<div class="box">
+  <div class="content">
+
+    <img src="/assets/img/turing-logo.png" alt="" srcset=""/>
+    <span>Faça o login na sua conta</span>
+    <div class="inputs">
+      <app-input (eventChange) = "onUsername($event)" label="Usuário" placeholder="digite seu username"></app-input>
+      <app-input (eventChange) = "onPassword($event)" label="Senha" type="password" placeholder="digite sua senha"></app-input>
+    </div>
+    <div class="buttons">
+      <app-button text="Login"></app-button>
+      <app-button typeBtn="secondary" text="Depósito"></app-button>
+      <!-- <span>{{username}}  {{password}}</span> -->
+    </div>
+    <div class="footer">
+      <p>Você não possui conta no banco? </p>
+      <a id="link-criar-conta"> Criar conta</a>
+  </div>
+  </div>
+
+</div>
