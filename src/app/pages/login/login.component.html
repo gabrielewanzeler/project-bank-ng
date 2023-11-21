@@ -4,17 +4,20 @@
     <img src="/assets/img/turing-logo.png" alt="" srcset=""/>
     <span>Faça o login na sua conta</span>
     <div class="inputs">
-      <app-input (eventChange) = "onUsername($event)" label="Usuário" placeholder="digite seu username"></app-input>
-      <app-input (eventChange) = "onPassword($event)" label="Senha" type="password" placeholder="digite sua senha"></app-input>
+      <app-input (click)="removeAlertInput()" [alertInput]="alertInput" (eventChange) = "onUsername($event)" label="Usuário" placeholder="digite seu username" ></app-input>
+      <app-input (click)="removeAlertInput()" [alertInput]="alertInput" [textAlert]="textAlert" (eventChange) = "onPassword($event)" label="Senha" type="password" placeholder="digite sua senha" ></app-input>
     </div>
     <div class="buttons">
-      <app-button text="Login"></app-button>
-      <app-button typeBtn="secondary" text="Depósito"></app-button>
+      <app-button text="Login" (click) = "realizarlogin()" ></app-button>
+
+      <app-button typeBtn="secondary" routerLink="/deposit" text="Depósito"></app-button>
       <!-- <span>{{username}}  {{password}}</span> -->
     </div>
     <div class="footer">
-      <p>Você não possui conta no banco? </p>
-      <a id="link-criar-conta"> Criar conta</a>
+      <p>Você não possui conta?
+
+        <a [routerLink]="['/create-account']"> Criar conta</a>
+      </p>
   </div>
   </div>
 

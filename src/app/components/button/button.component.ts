@@ -16,4 +16,8 @@ export class ButtonComponent implements OnInit {
   @Input() icon: string = "";
   @Input() pathIcon = "";
 
+  clickEvent(){
+    alert("ev click");
+  }
+
 }

@@ -68,9 +68,11 @@
               "browserTarget": "turing-bank-front:build:production"
             },
             "development": {
-              "browserTarget": "turing-bank-front:build:development"
+              "browserTarget": "turing-bank-front:build:development",
+              "proxyConfig": "proxy.config.json"
             }
           },
+         
           "defaultConfiguration": "development"
         },
         "extract-i18n": {

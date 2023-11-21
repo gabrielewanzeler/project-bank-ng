@@ -10,6 +10,8 @@ export class InputComponent {
   @Input() label: string = "";
   @Input() placeholder: string = "";
   @Input() type: string = "text";
+  @Input() textAlert: string="";
+  @Input() alertInput = false;
 
   @Output() eventChange: EventEmitter<string> = new EventEmitter<string>();
 
@@ -17,7 +19,11 @@ export class InputComponent {
 
   emitirContent(){
     this.eventChange.emit(this.content);
-    
+
+  }
+  removeAlert(){
+    this.textAlert = "";
+    this.alertInput=false;
   }
 
 }

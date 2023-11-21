@@ -1,4 +1,5 @@
 <div>
   <label>{{label}}</label>
-  <input [(ngModel)] = "content" (ngModelChange)="emitirContent()" [type]="type"  [placeholder]="placeholder" />
+  <input [class.alertInput]="alertInput" (focus)="removeAlert()" [(ngModel)] = "content" (ngModelChange)="emitirContent()" [type]="type"  [placeholder]="placeholder" />
+  <span *ngIf="textAlert">{{textAlert}}</span>
 </div>

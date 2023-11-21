@@ -7,6 +7,10 @@ import { ButtonComponent } from './components/button/button.component';
 import { InputComponent } from './components/input/input.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CreateAccountComponent } from './pages/create-account/create-account.component';
+import { DepositComponent } from './pages/deposit/deposit.component';
+
 
 
 @NgModule({
@@ -14,12 +18,15 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     ButtonComponent,
     InputComponent,
-    LoginComponent
+    LoginComponent,
+    CreateAccountComponent,
+    DepositComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

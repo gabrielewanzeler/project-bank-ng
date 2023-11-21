@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
+import { ResponseDto } from '../interfaces/responseDto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
 
-  url: string = "http://192.168.0.105:8080/login";
+  url: string = "/api-public/login";
 
-  constructor(private httpcliente: HttpClient) { }
+   constructor(private httpcliente: HttpClient) { }
 
-  public login(username: string, pasword: string): Observable<boolean> {
+  public login(username: string, pasword: string): Observable<ResponseDto> {
 
 
     const user = {
@@ -19,14 +20,35 @@ export class LoginServiceService {
       password: pasword
     };
 
-    return this.httpcliente.post(this.url, user).pipe(
-      map((response: any) => {
-        return response === 'OK';
-      }),
-      catchError(error => {
-        console.error('Erro durante a requisição de login', error);
-        return of(false); // Retorna um Observable indicando que o login falhou
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      // Adicione outros cabeçalhos se necessário
+    });
+
+
+    return this.httpcliente.post(this.url, user, {headers, observe: 'response'})
+     .pipe(
+       map((res: HttpResponse<any>) => {
+
+
+
+          const response : ResponseDto = {
+            statusCode : res.status,
+            message : "OK"
+          }
+
+          return response;
+
+       }),
+      catchError(e => {
+
+        const response : ResponseDto = {
+          statusCode : e.error.statusCode,
+          message : e.error.message
+        }
+
+        return of(response); // Retorna um Observable indicando que o login falhou
       })
-    );
+     );
   }
 }
